@@ -1,0 +1,38 @@
+{{extend 'layout.html'}}
+<h1>
+    Speaker Details
+</h1><hr>
+<h2>
+    {{=speaker.f_name}}
+</h2>
+<h3>
+    {{=speaker.f_subtitle}}
+</h3>
+<h4>
+    Website:<br>{{=MARKMIN(speaker.f_web) or "Website not provided"}}
+</h4>
+<p>
+    {{=speaker.f_bio}}
+</p>
+<br>
+<h2>
+    Talks by {{=speaker.f_name}}
+</h2><hr>
+{{if talksbyspeaker:}}
+    {{for talk in talksbyspeaker:}}
+    <div class="well">
+            <h3>
+                    <a href="{{=URL('show_talk', args=[talk.id])}}">
+                        {{=talk.f_title}}
+                    </a>
+            </h3>
+            <h4>
+                    on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
+            </h4>
+    </div>
+    {{pass}}
+{{else:}}
+<p>
+    No talks confirmed yet.
+</p>
+{{pass}}

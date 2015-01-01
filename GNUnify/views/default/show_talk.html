@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<h1>
+    Talk Details
+</h1><hr>
+<h2>
+        {{=talk.f_title}}
+</h2>
+<h3>
+        by <a href="{{=URL('show_speaker', args=[talk.f_speaker.id])}}">{{=talk.f_speaker.f_name}}</a>
+</h3>
+<h4>
+        on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
+</h4><hr>
+<p>
+    {{=talk.f_description}}
+</p>
+{{if talk.f_resource:}}
+        <h4>
+            Resources :
+        </h4><hr>
+        <p>
+            {{=A('Download Resources', _href=URL("download", args=talk.f_resource), _class="btn btn-primary") or ""}}
+        </p>
+{{pass}}

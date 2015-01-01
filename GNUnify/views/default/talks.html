@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+<h1>Talks @ GNUnify 2015</h1><hr>
+{{for talk in talks:}}
+    <div class="well">
+            <h3>
+                    <a href="{{=URL('show_talk', args=[talk.id])}}">
+                        {{=talk.f_title}}
+                    </a>
+            </h3>
+            <h4>
+                    by <a href="{{=URL('show_speaker', args=[talk.f_speaker.id])}}">{{=talk.f_speaker.f_name}}</a>
+            </h4>
+            <h4>
+                    on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
+            </h4>
+    </div>
+{{pass}}

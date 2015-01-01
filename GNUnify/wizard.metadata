@@ -1,0 +1,212 @@
+(dp0
+S'table_room'
+p1
+(lp2
+S'name integer'
+p3
+aS'is_a_lab boolean'
+p4
+aS'capacity integer'
+p5
+asS'tables'
+p6
+(lp7
+S'auth_user'
+p8
+aS'speaker'
+p9
+aS'room'
+p10
+aS'slot'
+p11
+aS'talk'
+p12
+asS'table_talk'
+p13
+(lp14
+S'title notnull'
+p15
+aS'speaker'
+p16
+aS'slot'
+p17
+aS'description text'
+p18
+aS'resource upload'
+p19
+asS'page_speaker_manage'
+p20
+S'## Manage speaker\r\n\r\n{{=form}}'
+p21
+sS'name'
+p22
+S'GNUnify'
+p23
+sS'page_slot_manage'
+p24
+S'## Manage slot\r\n\r\n{{=form}}'
+p25
+sS'page_contact_us'
+p26
+S'#contact info here'
+p27
+sS'table_speaker'
+p28
+(lp29
+S'name'
+p30
+aS'subtitle'
+p31
+aS'web'
+p32
+aS'bio text'
+p33
+asS'page_talk_manage'
+p34
+S'## Manage talk\r\n\r\n{{=form}}'
+p35
+sS'pages'
+p36
+(lp37
+S'index'
+p38
+aS'talks'
+p39
+aS'speakers'
+p40
+aS'faq'
+p41
+aS'contact_us'
+p42
+aS'error'
+p43
+aS'speaker_manage'
+p44
+aS'room_manage'
+p45
+aS'slot_manage'
+p46
+aS'talk_manage'
+p47
+asS'page_index'
+p48
+S'# Welcome to GNUnify !'
+p49
+sS'page_talks'
+p50
+S'#List of talks here'
+p51
+sS'page_error'
+p52
+S'# Error: the document does not exist'
+p53
+sS'page_room_manage'
+p54
+S'## Manage room\r\n\r\n{{=form}}'
+p55
+sS'params'
+p56
+(lp57
+(S'title'
+p58
+S'GNUnify'
+p59
+tp60
+a(S'subtitle'
+p61
+S''
+p62
+tp63
+a(S'author'
+p64
+S'Siddharth Bhatt'
+p65
+tp66
+a(S'author_email'
+p67
+S'sidbhatt11@yahoo.in'
+p68
+tp69
+a(S'keywords'
+p70
+g62
+tp71
+a(S'description'
+p72
+g62
+tp73
+a(S'layout_theme'
+p74
+S'Default'
+p75
+tp76
+a(S'database_uri'
+p77
+S'sqlite://storage.sqlite'
+p78
+tp79
+a(S'security_key'
+p80
+S'86b17a4f-628a-4780-b7e9-4cd146e19648'
+p81
+tp82
+a(S'email_server'
+p83
+S'localhost'
+p84
+tp85
+a(S'email_sender'
+p86
+S'you@example.com'
+p87
+tp88
+a(S'email_login'
+p89
+g62
+tp90
+a(S'login_method'
+p91
+S'local'
+p92
+tp93
+a(S'login_config'
+p94
+g62
+tp95
+a(S'plugins'
+p96
+(lp97
+tp98
+asS'page_faq'
+p99
+S'#FAQs here'
+p100
+sS'table_auth_user'
+p101
+(lp102
+S'username'
+p103
+aS'first_name'
+p104
+aS'last_name'
+p105
+aS'email'
+p106
+aS'password'
+p107
+asS'page_speakers'
+p108
+S'#List if speakers here'
+p109
+sS'table_slot'
+p110
+(lp111
+S'room'
+p112
+aS'date date'
+p113
+aS'start_time time'
+p114
+aS'stop_time time'
+p115
+as.

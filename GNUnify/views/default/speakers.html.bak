@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<h1>Speaker @ GNUnify 2015</h1><hr>
+{{for speaker in speakers:}}
+    <div class="well">
+            <h3>
+                    <a href="{{=URL('show_speaker', args=[speaker.id])}}">
+                        {{=speaker.f_name}}
+                    </a>
+            </h3>
+            <h4>
+                    {{=speaker.f_subtitle}}
+            </h4>
+    </div>
+{{pass}}
