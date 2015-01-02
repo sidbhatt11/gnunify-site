@@ -1,6 +1,11 @@
 {{extend 'layout.html'}}
-<h1>Talks @ GNUnify 2015</h1><hr>
-{{for talk in talks:}}
+<h2>These are the talks you are attending.. 
+    <div class="pull-right">
+        <a href="{{=URL('send_mail')}}" class="btn btn-primary">Email Me</a>
+        <a href="{{=URL('get_ics')}}" class="btn btn-primary" target="_blank">Get .ics</a>
+    </div>
+</h2><hr>
+{{for talk in talks_attending:}}
     <div class="well">
             <h3>
                     <a href="{{=URL('show_talk', args=[talk.id])}}">
@@ -12,6 +17,9 @@
             </h4>
             <h4>
                     on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
+            </h4>
+            <h4>
+                    {{=talk.count}} people attending
             </h4>
     </div>
 {{pass}}

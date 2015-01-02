@@ -52,10 +52,10 @@ auth.define_tables(username=False, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'mx1.0hosting.org:2525'
+mail.settings.server = 'smtp.gmail.com:587'
 #mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
-mail.settings.sender = 'admin@siddharthbhatt.com'
-mail.settings.login = 'admin@siddharthbhatt.com:sidbhatt11'
+mail.settings.sender = 'sidbhatt44@gmail.com'
+mail.settings.login = 'sidbhatt44:98258S!Dbhatt11'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False

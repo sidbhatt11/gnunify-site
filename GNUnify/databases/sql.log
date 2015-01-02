@@ -217,3 +217,30 @@ success!
 success!
 success!
 success!
+timestamp: 2015-01-02T17:12:47.898756
+CREATE TABLE t_attendance(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_talk_id INTEGER REFERENCES t_talk (id) ON DELETE CASCADE,
+    f_user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    f_attending CHAR(5),
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2015-01-02T17:12:47.951311
+CREATE TABLE t_attendance_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_talk_id INTEGER REFERENCES t_talk (id) ON DELETE CASCADE,
+    f_user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    f_attending CHAR(5),
+    is_active CHAR(1),
+    created_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on TIMESTAMP,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_attendance (id) ON DELETE CASCADE
+);
+success!
