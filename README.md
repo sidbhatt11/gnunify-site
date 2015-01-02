@@ -16,6 +16,9 @@ Added:
 - 'My participation' view for users
 - Ability to mail users their individual schedule for GNUnify
 - Ability to export .ics files of users' individual schedule for GNUnify
+- Recaptcha for user registration
 
 Important Instructions : 
-- After uploading w2p file and creating new application, edit 0.py and set-up your own SMTP settings. Mailing feature won't work otherwise.
+After uploading w2p file and creating new application: 
+- edit 0.py and set-up your own SMTP settings. Mailing feature won't work otherwise.
+- register with recaptcha (https://www.google.com/recaptcha) if already haven't; then edit db.py and paste your public and private keys in the correct places. Recaptcha won't work otherwise.

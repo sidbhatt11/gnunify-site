@@ -156,3 +156,7 @@
 [2015-01-03 02:54:05] EDIT GNUnify/controllers/default.py: -1
 [2015-01-03 02:54:12] EDIT GNUnify/views/default/get_ics.ics: 0
 [2015-01-03 02:59:58] EDIT GNUnify/models/0.py: 0
+[2015-01-03 03:11:10] EDIT GNUnify/models/0.py: 0
+[2015-01-03 03:18:00] EDIT GNUnify/models/db.py: 3
+[2015-01-03 03:21:06] EDIT GNUnify/models/db.py: 0
+[2015-01-03 03:21:32] EDIT GNUnify/models/0.py: 0

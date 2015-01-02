@@ -52,10 +52,10 @@ auth.define_tables(username=False, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'smtp.gmail.com:587'
+mail.settings.server = 'mx1.0hosting.org:2525'
 #mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
-mail.settings.sender = 'sidbhatt44@gmail.com'
-mail.settings.login = 'sidbhatt44:98258S!Dbhatt11'
+mail.settings.sender = 'admin@siddharthbhatt.com'
+mail.settings.login = 'admin@siddharthbhatt.com:sidbhatt11'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
@@ -90,3 +90,7 @@ use_janrain(auth, filename='private/janrain.key')
 mail.settings.server = settings.email_server
 mail.settings.sender = settings.email_sender
 mail.settings.login = settings.email_login
+
+from gluon.tools import Recaptcha
+auth.settings.captcha = Recaptcha(request,
+    '6Lcz9P8SAAAAAEEhMyIecVQWSraToVIIVd_sVT5X', '6Lcz9P8SAAAAAJcD2A5F8r97-sPQdenmKe-86CO2')

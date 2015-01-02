@@ -90,3 +90,7 @@ use_janrain(auth, filename='private/janrain.key')
 mail.settings.server = settings.email_server
 mail.settings.sender = settings.email_sender
 mail.settings.login = settings.email_login
+
+from gluon.tools import Recaptcha
+auth.settings.captcha = Recaptcha(request,
+    'public_key', 'private_key')
