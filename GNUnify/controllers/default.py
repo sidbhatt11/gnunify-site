@@ -11,7 +11,8 @@ def talks():
     talks = db(db.t_talk).select()
     for talk in talks:
         talk.count = db((db.t_attendance.f_talk_id == talk.id) & (db.t_attendance.f_attending == "yes")).count()
-    return dict(talks=talks)
+    categories = db(db.t_category).select()
+    return dict(talks=talks,categories=categories)
 
 def speakers():
     speakers = db(db.t_speaker).select(orderby=db.t_speaker.id)
@@ -79,6 +80,42 @@ def action():
     db.commit()
     redirect(URL('show_talk',args=[talkid]))
 
+def show_talk_category():
+    if not request.args:
+        redirect(URL('index'))
+    response.view = 'show_talk_category.json'
+    categoryid = request.args[0]
+    if categoryid == '0':
+        talks = db(db.t_talk).select(db.t_talk.ALL,orderby=db.t_talk.f_slot)
+    else:
+        talks = db(db.t_talk.f_category == categoryid).select(db.t_talk.ALL,orderby=db.t_talk.f_slot)
+    if talks == None:
+        talk.message = "No Talks in this category"
+    else:
+        for talk in talks:
+            #need to fix all references incl speaker, slot, category
+            #===general
+            talk.id = talk.id
+            talk.title = talk.f_title
+            talk.description = talk.f_description
+            talk.resource = talk.f_resource
+            #===speaker
+            talk.speaker_id = talk.f_speaker.id
+            talk.speaker_name = talk.f_speaker.f_name
+            talk.speaker_subtitle = talk.f_speaker.f_subtitle
+            talk.speaker_web = talk.f_speaker.f_web
+            talk.speaker_bio = talk.f_speaker.f_bio
+            #===slot
+            talk.slot_room = talk.f_slot.f_room.f_name
+            talk.slot_date = talk.f_slot.f_date
+            talk.start_time = talk.f_slot.f_start_time
+            talk.stop_time = talk.f_slot.f_stop_time
+            #===category
+            talk.category = talk.f_category.f_category
+            #===count
+            talk.count = db((db.t_attendance.f_talk_id == talk.id) & (db.t_attendance.f_attending == "yes")).count()
+    return dict(talks=talks)
+
 @auth.requires_login()
 def talks_attending():
     talks_attending = db((db.t_attendance.f_user_id == auth.user.id) & (db.t_attendance.f_attending == "yes")).select(db.t_talk.ALL, left=db.t_talk.on(db.t_talk.id==db.t_attendance.f_talk_id))
@@ -99,6 +136,11 @@ def room_manage():
 @auth.requires_membership('manager')
 def slot_manage():
     form = SQLFORM.smartgrid(db.t_slot,onupdate=auth.archive)
+    return locals()
+
+@auth.requires_membership('manager')
+def category_manage():
+    form = SQLFORM.smartgrid(db.t_category,onupdate=auth.archive)
     return locals()
 
 @auth.requires_membership('manager')

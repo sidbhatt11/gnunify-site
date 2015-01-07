@@ -52,10 +52,9 @@ auth.define_tables(username=False, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'mx1.0hosting.org:2525'
-#mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
-mail.settings.sender = 'admin@siddharthbhatt.com'
-mail.settings.login = 'admin@siddharthbhatt.com:sidbhatt11'
+mail.settings.server = settings.email_server
+mail.settings.sender = settings.email_sender
+mail.settings.login = settings.email_login
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
@@ -87,10 +86,10 @@ use_janrain(auth, filename='private/janrain.key')
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
 
-mail.settings.server = settings.email_server
-mail.settings.sender = settings.email_sender
-mail.settings.login = settings.email_login
 
+#insert yr recaptcha keys below and un-comment the code to see recaptcha in action
+"""
 from gluon.tools import Recaptcha
 auth.settings.captcha = Recaptcha(request,
-    'public_key', 'private_key')
+    'your_public_key', 'your_private_key')
+"""

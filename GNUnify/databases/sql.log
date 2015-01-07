@@ -244,3 +244,22 @@ CREATE TABLE t_attendance_archive(
     current_record INTEGER REFERENCES t_attendance (id) ON DELETE CASCADE
 );
 success!
+timestamp: 2015-01-07T18:19:05.551173
+CREATE TABLE t_category(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_category CHAR(512)
+);
+success!
+timestamp: 2015-01-07T18:20:00.509797
+CREATE TABLE t_category_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_category CHAR(512),
+    current_record INTEGER REFERENCES t_category (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2015-01-07T18:20:00.555538
+ALTER TABLE t_talk ADD f_category INTEGER REFERENCES t_category (id) ON DELETE CASCADE;
+success!
+timestamp: 2015-01-07T18:20:00.608264
+ALTER TABLE t_talk_archive ADD f_category INTEGER REFERENCES t_category (id) ON DELETE CASCADE;
+success!

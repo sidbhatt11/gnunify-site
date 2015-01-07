@@ -22,41 +22,41 @@ sS'type'
 p10
 S'string'
 p11
-ssS'f_description'
+ssS'f_category'
 p12
 (dp13
-g4
-I32768
-sg5
-I00
-sg6
-I5
-sg7
-S'TEXT'
-p14
-sg9
-I00
-sg10
-S'text'
-p15
-ssS'current_record'
-p16
-(dp17
 g4
 I512
 sg5
 I00
 sg6
-I12
+I5
 sg7
-S'INTEGER REFERENCES t_talk (id) ON DELETE CASCADE'
+S'INTEGER REFERENCES t_category (id) ON DELETE CASCADE'
+p14
+sg9
+I00
+sg10
+S'reference t_category'
+p15
+ssS'f_description'
+p16
+(dp17
+g4
+I32768
+sg5
+I00
+sg6
+I6
+sg7
+S'TEXT'
 p18
 sg9
 I00
 sg10
-S'reference t_talk'
+S'text'
 p19
-ssS'id'
+ssS'f_speaker'
 p20
 (dp21
 g4
@@ -64,16 +64,16 @@ I512
 sg5
 I00
 sg6
-I1
+I3
 sg7
-S'INTEGER PRIMARY KEY AUTOINCREMENT'
+S'INTEGER REFERENCES t_speaker (id) ON DELETE CASCADE'
 p22
 sg9
 I00
 sg10
-S'id'
+S'reference t_speaker'
 p23
-ssS'f_resource'
+ssS'current_record'
 p24
 (dp25
 g4
@@ -81,16 +81,16 @@ I512
 sg5
 I00
 sg6
-I6
+I13
 sg7
-S'CHAR(512)'
+S'INTEGER REFERENCES t_talk (id) ON DELETE CASCADE'
 p26
 sg9
 I00
 sg10
-S'upload'
+S'reference t_talk'
 p27
-ssS'is_active'
+ssS'f_resource'
 p28
 (dp29
 g4
@@ -100,14 +100,14 @@ I00
 sg6
 I7
 sg7
-S'CHAR(1)'
+S'CHAR(512)'
 p30
 sg9
 I00
 sg10
-S'boolean'
+S'upload'
 p31
-ssS'created_by'
+ssS'is_active'
 p32
 (dp33
 g4
@@ -115,18 +115,35 @@ I512
 sg5
 I00
 sg6
-I9
+I8
 sg7
-S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
+S'CHAR(1)'
 p34
 sg9
 I00
 sg10
-S'reference auth_user'
+S'boolean'
 p35
-ssS'f_slot'
+ssS'created_by'
 p36
 (dp37
+g4
+I512
+sg5
+I00
+sg6
+I10
+sg7
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
+p38
+sg9
+I00
+sg10
+S'reference auth_user'
+p39
+ssS'f_slot'
+p40
+(dp41
 g4
 I512
 sg5
@@ -135,30 +152,13 @@ sg6
 I4
 sg7
 S'INTEGER REFERENCES t_slot (id) ON DELETE CASCADE'
-p38
-sg9
-I00
-sg10
-S'reference t_slot'
-p39
-ssS'created_on'
-p40
-(dp41
-g4
-I512
-sg5
-I00
-sg6
-I8
-sg7
-S'TIMESTAMP'
 p42
 sg9
 I00
 sg10
-S'datetime'
+S'reference t_slot'
 p43
-ssS'modified_on'
+ssS'created_on'
 p44
 (dp45
 g4
@@ -166,17 +166,18 @@ I512
 sg5
 I00
 sg6
-I10
+I9
 sg7
 S'TIMESTAMP'
 p46
 sg9
 I00
 sg10
-g43
-ssS'modified_by'
+S'datetime'
 p47
-(dp48
+ssS'modified_on'
+p48
+(dp49
 g4
 I512
 sg5
@@ -184,27 +185,43 @@ I00
 sg6
 I11
 sg7
-S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
-p49
+S'TIMESTAMP'
+p50
 sg9
 I00
 sg10
-g35
-ssS'f_speaker'
-p50
-(dp51
+g47
+ssS'modified_by'
+p51
+(dp52
 g4
 I512
 sg5
 I00
 sg6
-I3
+I12
 sg7
-S'INTEGER REFERENCES t_speaker (id) ON DELETE CASCADE'
-p52
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
+p53
 sg9
 I00
 sg10
-S'reference t_speaker'
-p53
+g39
+ssS'id'
+p54
+(dp55
+g4
+I512
+sg5
+I00
+sg6
+I1
+sg7
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p56
+sg9
+I00
+sg10
+S'id'
+p57
 ss.

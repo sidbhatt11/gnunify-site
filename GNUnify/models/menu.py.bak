@@ -11,6 +11,9 @@ response.menu = [
 (T('Contact Us'),URL('default','contact_us')==URL(),URL('default','contact_us'),[])
 ]
 
+if auth.is_logged_in():
+    response.menu.append((T('My Participation'),URL('default','talks_attending')==URL(),URL('default','talks_attending'),[]))
+
 if auth.has_membership('manager'):
     response.menu.append((T('Manage'),URL('default','index')==URL(),URL('default','index'),[
     (T('Speaker'),URL('default','speaker_manage')==URL(),URL('default','speaker_manage'),[]),

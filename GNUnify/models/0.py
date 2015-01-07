@@ -14,7 +14,7 @@ settings.security_key = '86b17a4f-628a-4780-b7e9-4cd146e19648'
 
 settings.email_server = 'smtp.gmail.com:587'
 settings.email_sender = 'yourid@gmail.com'
-settings.email_login = 'yourid@gmail.com:yourpassword'
+settings.email_login = 'yourid@gmail.com:yourgmailpassword'
 
 settings.login_method = 'local'
 settings.login_config = ''

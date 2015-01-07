@@ -9,8 +9,13 @@
         by <a href="{{=URL('show_speaker', args=[talk.f_speaker.id])}}">{{=talk.f_speaker.f_name}}</a>
 </h3>
 <h4>
-        on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}<br>
-    {{=talk.count}} people attending
+        in {{=talk.f_category.f_category}}
+</h4>
+<h4>
+        on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
+</h4>
+<h4>
+        {{=talk.count}} people attending
 </h4><hr>
 {{if auth.is_logged_in():}}
     <p>

@@ -1,20 +1,61 @@
 {{extend 'layout.html'}}
 <h1>Talks @ GNUnify 2015</h1><hr>
-{{for talk in talks:}}
-    <div class="well">
-            <h3>
-                    <a href="{{=URL('show_talk', args=[talk.id])}}">
-                        {{=talk.f_title}}
-                    </a>
-            </h3>
-            <h4>
-                    by <a href="{{=URL('show_speaker', args=[talk.f_speaker.id])}}">{{=talk.f_speaker.f_name}}</a>
-            </h4>
-            <h4>
-                    on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
-            </h4>
-            <h4>
-                    {{=talk.count}} people attending 
-            </h4>
-    </div>
-{{pass}}
+<p>
+    View Talks by Category :
+    <select id='category'>
+            <option value="0" selected>ALL</option>
+        {{for category in categories:}}
+            <option value="{{=category.id}}">{{=category.f_category}}</option>
+        {{pass}}
+    </select>
+</p><hr>
+<div id="talks">
+    {{for talk in talks:}}
+        <div class="well">
+                <h3>
+                        <a href="{{=URL('show_talk', args=[talk.id])}}">
+                            {{=talk.f_title}}
+                        </a>
+                </h3>
+                <h4>
+                        by <a href="{{=URL('show_speaker', args=[talk.f_speaker.id])}}">{{=talk.f_speaker.f_name}}</a>
+                </h4>
+                <h4>
+                        in <a class="cate" href="{{=talk.f_category}}">{{=talk.f_category.f_category}}</a> category
+                </h4>
+                <h4>
+                        on {{=talk.f_slot.f_date}} From {{=talk.f_slot.f_start_time}} To {{=talk.f_slot.f_stop_time}} in {{=talk.f_slot.f_room.f_name}}
+                </h4>
+                <h4>
+                        {{=talk.count}} people attending
+                </h4>
+        </div>
+    {{pass}}
+</div>
+
+<script>
+    $("a.cate").click(function(event){ //when anchor is clicked
+        event.preventDefault();
+        $("#category").val($(this).attr("href"));
+        updateContent();
+    });
+
+    $('#category').change(function(){
+        //alert("function called");
+        updateContent();
+    });
+
+    function updateContent(){
+        var str = "show_talk_category.json/"+category.value;
+        $.get( str, function( data ) {
+            var htm = "";
+            $.each(data, function(idx, obj) {
+                //htm += JSON.stringify(obj);
+                $.each(obj, function(idx, talk) {
+                    htm += "<div class=\"well\"><a href=\"show_talk/"+talk.id+"\"><h3>"+talk.title+"</h3></a><h4>by <a href=\"show_speaker/"+talk.speaker_id+"\">"+talk.speaker_name+"</a></h4><h4>on "+talk.slot_date+" from "+talk.start_time+" To "+talk.stop_time+" in "+talk.slot_room+"</h4><h4>"+talk.count+" people attending</h4></div>";
+                });
+            });
+            $( "#talks" ).html( htm );
+        });//get over
+    }
+</script>

@@ -52,6 +52,14 @@ db.t_speaker.f_web.requires = IS_URL()
 db.define_table('t_speaker_archive',db.t_speaker,Field('current_record','reference t_speaker',readable=False,writable=False))
 
 ########################################
+
+db.define_table('t_category',
+                Field('f_category', 'string', label=T('Category')),
+                format='%(f_category)s',
+                migrate=settings.migrate)
+db.define_table('t_category_archive',db.t_attendance,Field('current_record','reference t_category',readable=False,writable=False))
+
+########################################
 db.define_table('t_talk',
     Field('f_title', type='string', notnull=True,
           label=T('Title')),
@@ -59,6 +67,7 @@ db.define_table('t_talk',
           label=T('Speaker')),
     Field('f_slot', type='reference t_slot', unique=True,
           label=T('Slot')),
+    Field('f_category', type='reference t_category', label=T('Category')),
     Field('f_description', type='text',
           label=T('Description')),
     Field('f_resource', type='upload',
@@ -68,6 +77,7 @@ db.define_table('t_talk',
     migrate=settings.migrate)
 
 db.t_talk.f_slot.requires = IS_NOT_IN_DB(db,db.t_talk.f_slot)
+db.t_talk.f_category.requires = IS_IN_DB(db,db.t_category.id,'%(f_category)s')
 db.t_talk.f_slot.requires = IS_IN_DB(db,db.t_slot.id,'%(f_room)s %(f_date)s %(f_start_time)s %(f_stop_time)s')
 db.define_table('t_talk_archive',db.t_talk,Field('current_record','reference t_talk',readable=False,writable=False))
 ########################################
@@ -82,5 +92,4 @@ db.define_table('t_attendance',
 
 db.t_attendance.f_talk_id.requires = IS_IN_DB(db,db.t_talk.id,'%(f_speaker)s %(f_title)s')
 db.t_attendance.f_user_id.requires = IS_IN_DB(db,db.auth_user.id,'%(first_name)s %(last_name)s')
-
 db.define_table('t_attendance_archive',db.t_attendance,Field('current_record','reference t_attendance',readable=False,writable=False))

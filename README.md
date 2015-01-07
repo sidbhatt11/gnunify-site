@@ -11,6 +11,11 @@ www.siddharthbhatt.com
 
 ========================================================
 
+Update 8/1/15:
+Added:
+- 'View talks by category'
+
+
 Update 3/1/15:
 Added:
 - 'My participation' view for users
@@ -19,6 +24,7 @@ Added:
 - Recaptcha for user registration
 
 Important Instructions : 
+========================
 After uploading w2p file and creating new application: 
 - edit 0.py and set-up your own SMTP settings. Mailing feature won't work otherwise.
 - register with recaptcha (https://www.google.com/recaptcha) if already haven't; then edit db.py and paste your public and private keys in the correct places. Recaptcha won't work otherwise.

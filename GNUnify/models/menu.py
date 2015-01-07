@@ -19,6 +19,7 @@ if auth.has_membership('manager'):
     (T('Speaker'),URL('default','speaker_manage')==URL(),URL('default','speaker_manage'),[]),
     (T('Room'),URL('default','room_manage')==URL(),URL('default','room_manage'),[]),
     (T('Slot'),URL('default','slot_manage')==URL(),URL('default','slot_manage'),[]),
+    (T('Category'),URL('default','category_manage')==URL(),URL('default','category_manage'),[]),
     (T('Talk'),URL('default','talk_manage')==URL(),URL('default','talk_manage'),[]),
     (T('Attendance'),URL('default','attendance_manage')==URL(),URL('default','attendance_manage'),[])
 ]))
